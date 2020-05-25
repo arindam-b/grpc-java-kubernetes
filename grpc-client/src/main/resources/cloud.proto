@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_package = "fr.arindam.grpc";
+
+service cloud{
+    rpc getSpecific(CloudRequest)  returns (CloudResponse);
+}
+
+message CloudRequest{
+       string id = 1 ;       
+}
+
+message CloudResponse{
+      string providerName = 1;
+      int32  numberOfRegionAvailable  = 2;
+}
