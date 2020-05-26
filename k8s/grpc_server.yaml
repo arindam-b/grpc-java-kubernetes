@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: cloud-service
+  name: cloud-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: cloud-service
+  template:
+    metadata:
+      labels:
+        run: cloud-service
+    spec:
+      containers:
+      - name: cloud-service
+        image: arindambanerjee/grpc-service:v1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: cloud-service
+  name: cloud-service
+spec:
+  ports:
+  - name: grpc
+    port: 8080
+    targetPort: 8080
+  selector:
+    run: cloud-service
+  sessionAffinity: None
+  type: ClusterIP
