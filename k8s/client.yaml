@@ -20,5 +20,5 @@ spec:
         env:
         - name: SERVICE_HOST
           value: cloud-service
-        - name: ECHO_SERVICE_PORT
+        - name: SERVICE_PORT
           value: "8080"
