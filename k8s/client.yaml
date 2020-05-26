@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: cloud-client
+  name: cloud-client
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: cloud-client
+  template:
+    metadata:
+      labels:
+        run: cloud-client
+    spec:
+      containers:
+      - name: cloud-client
+        image: arindambanerjee/grpc-client:v1
+        env:
+        - name: SERVICE_HOST
+          value: cloud-service
+        - name: ECHO_SERVICE_PORT
+          value: "8080"
