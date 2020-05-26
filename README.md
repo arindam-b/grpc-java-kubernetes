@@ -64,3 +64,7 @@ docker build -t grpc-client:v1 grpc-client/
 
 kubectl apply -f grpc_server.yaml
 kubectl apply -f grpc_client.yaml
+
+Logs:
+
+![GRPC Communication](https://github.com/arindam-b/grpc-java-kubernetes/blob/master/demo/Kubernetes%20Deployment.png)   
