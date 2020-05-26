@@ -12,8 +12,11 @@ import io.grpc.ManagedChannelBuilder;
 public class GrpcClient {
 
 	public static void main(String[] args) throws InterruptedException {
+		
+		String host = System.getenv("SERVICE_HOST");
+		String port = System.getenv("SERVICE_PORT");	
 
-		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080).usePlaintext().build();
+		ManagedChannel channel = ManagedChannelBuilder.forAddress(host, Integer.parseInt(port)).usePlaintext().build();
 
 		cloudBlockingStub cloudStub = cloudGrpc.newBlockingStub(channel);
 
